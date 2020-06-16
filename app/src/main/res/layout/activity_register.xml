@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RegisterActivity"
+    android:orientation="vertical"
+   android:padding="20dp"
+
+    >
+
+
+    <TextView
+        android:id="@+id/registermsg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/please_register_msg"
+        android:textColor="@color/colorPrimary"
+        android:textStyle="bold"
+        android:textSize="22sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintBottom_toTopOf="@id/registername"/>
+
+<FrameLayout
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+    android:layout_marginTop="10dp">
+    <TextView
+        android:id="@+id/registername"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:text="@string/register_name"
+        android:layout_gravity="left|center"
+        android:textSize="20sp"
+
+         />
+    <EditText
+        android:id="@+id/editTextTextPersonName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+
+        android:inputType="textPersonName"
+        android:hint="@string/register_name"
+        android:layout_gravity="right"
+      />
+</FrameLayout>
+
+    <FrameLayout
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/registerusername"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="@string/register_username"
+            android:layout_gravity="left|center"
+            android:textSize="20sp"
+
+            />
+        <EditText
+            android:id="@+id/editTextTextPersonUserName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:hint="@string/register_username"
+            android:layout_gravity="right"
+            />
+    </FrameLayout>
+
+<FrameLayout
+    android:layout_marginTop="10dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <TextView
+        android:id="@+id/registerpassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/register_password"
+        android:layout_gravity="left|center"
+        android:textSize="20sp"
+        />
+    <EditText
+        android:id="@+id/editTextTextPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:layout_gravity="right"
+        android:hint="@string/register_password"
+        />
+</FrameLayout>
+    <Button
+        android:id="@+id/register_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/action_register"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        />
+
+
+
+
+
+</LinearLayout>
