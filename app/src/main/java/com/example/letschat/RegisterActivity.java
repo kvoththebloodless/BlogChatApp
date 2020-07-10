@@ -33,22 +33,23 @@ public class RegisterActivity extends AppCompatActivity {
                 if (binding.editTextTextPersonUserName.getText()!=null && binding.editTextTextPersonUserName.getText().toString() != null
                         && binding.editTextTextPassword.getText()!=null && binding.editTextTextPassword.getText().toString() != null
                         && binding.editTextTextPersonUserName.getText()!=null && binding.editTextTextPersonUserName.getText().toString() != null) {
-                    UserService service = RetrofitSingleton.getRetrofitInstance().create(UserService.class);
+                    UserService service = RetrofitSingleton.getRetrofitInstance(RegisterActivity.this).create(UserService.class);
                     Call<User> callAsync = service.signUp(binding.editTextTextPersonName.getText().toString(),
                             binding.editTextTextPersonUserName.getText().toString(),
-                            binding.editTextTextPersonUserName.getText().toString());
+                            binding.editTextTextPassword.getText().toString());
 
                     callAsync.enqueue(new Callback<User>() {
 
                         @Override
                         public void onResponse(Call<User> call, Response<User> response) {
                             if (response.isSuccessful()) {
-                                User apiResponse = response.body();
-                                Log.i("tokenn",apiResponse.toString());
-                                //API response
-                               SharedPreferences.Editor editor= getSharedPreferences(CONSTANTS.SharedPreferenceName,0).edit();
-                               editor.putString("token",apiResponse.getToken());
-                               editor.commit();
+//                                User apiResponse = response.body();
+//                                Log.i("tokenn",apiResponse.toString());
+//                                //API response
+//                               SharedPreferences.Editor editor= getSharedPreferences(CONSTANTS.SharedPreferenceName,0).edit();
+//                               editor.putString("name",binding.editTextTextPersonName.getText().toString());
+//                               editor.putString("token",apiResponse.getToken());
+//                               editor.commit();
                                Intent in=new Intent(RegisterActivity.this,ChatActivity.class);
                                 in.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                startActivity(in);

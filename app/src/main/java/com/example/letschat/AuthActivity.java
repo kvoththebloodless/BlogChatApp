@@ -10,9 +10,11 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.example.letschat.databinding.ActivityAuthBinding;
+
 import com.example.letschat.rest.RetrofitSingleton;
 import com.example.letschat.rest.serializers.user.User;
 import com.example.letschat.rest.service.UserService;
+
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -27,7 +29,7 @@ public class AuthActivity extends AppCompatActivity {
         ActivityAuthBinding binding = ActivityAuthBinding.inflate(getLayoutInflater());
 
         if(getSharedPreferences(CONSTANTS.SharedPreferenceName,0).getString("token",null)!=null)
-        {
+        {   Log.d("token?",getSharedPreferences(CONSTANTS.SharedPreferenceName,0).getString("token",null));
             Intent in = new Intent(AuthActivity.this, ChatActivity.class);
             in.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(in);
@@ -46,7 +48,9 @@ public class AuthActivity extends AppCompatActivity {
 
                 if(binding.username.getText()!=null && binding.username.getText().toString()!=null
                         && binding.password.getText()!=null && binding.password.getText().toString()!=null ) {
-                    UserService service = RetrofitSingleton.getRetrofitInstance().create(UserService.class);
+
+
+                    UserService service = RetrofitSingleton.getRetrofitInstance(AuthActivity.this).create(UserService.class);
 
                     Call<User> callAsync = service.login(binding.username.getText().toString(), binding.password.getText().toString());
 
@@ -56,12 +60,13 @@ public class AuthActivity extends AppCompatActivity {
                         public void onResponse(Call<User> call, Response<User> response) {
                             if (response.isSuccessful()) {
                                 if (response.isSuccessful()) {
-                                    User apiResponse = response.body();
-                                    Log.i("tokennnnn",apiResponse.toString());
-                                    //API response
-                                    SharedPreferences.Editor editor = getSharedPreferences(CONSTANTS.SharedPreferenceName, 0).edit();
-                                    editor.putString("token", apiResponse.getToken());
-                                    editor.commit();
+//                                    User apiResponse = response.body();
+//                                    Log.i("tokennnnn",apiResponse.toString());
+//                                    //API response
+//                                    SharedPreferences.Editor editor = getSharedPreferences(CONSTANTS.SharedPreferenceName, 0).edit();
+//                                    editor.putString("token", apiResponse.getToken());
+//                                    editor.putString("name",binding.username.getText().toString());
+//                                    editor.commit();
                                     Intent in = new Intent(AuthActivity.this, ChatActivity.class);
                                     in.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                     startActivity(in);
